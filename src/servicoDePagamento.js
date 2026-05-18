@@ -1,11 +1,11 @@
-class ServicoDePagamento{
+export default class ServicoDePagamento{
     #pagamentos;
     constructor(){
         this.#pagamentos = [];
     }
 
     pagar(codigoDeBarras, empresa, valor){
-        //let categoria = 'padrao';
+        //let categoria = 'padrão';
         //if(valor > 100)
         //    categoria = 'cara';
 
@@ -13,18 +13,11 @@ class ServicoDePagamento{
             codigoBarras: codigoDeBarras,
             empresa: empresa,
             valor: valor,
-            categoria: valor > 100 ? 'cara' : 'padrao'
+            categoria: valor > 100 ? 'cara' : 'padrão'
         });
     }
-    consultarTodosPagamentos(){
-        return this.#pagamentos;
-    }
+
     consultarUltimoPagamento(){
         return this.#pagamentos.at(-1);
     }
 }
-const servicoDePagamento = new ServicoDePagamento();
-servicoDePagamento.pagar('0987-7656-3475', 'Samar', 156.87);
-servicoDePagamento.pagar('0987-7656-3476', 'Samar', 90.87);
-
-console.log(servicoDePagamento.consultarUltimoPagamento());
