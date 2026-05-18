@@ -5,16 +5,19 @@ class ServicoDePagamento{
     }
 
     pagar(codigoDeBarras, empresa, valor){
-        let categoria = 'padrao';
-        if(valor > 100)
-            categoria = 'cara';
+        //let categoria = 'padrao';
+        //if(valor > 100)
+        //    categoria = 'cara';
 
         this.#pagamentos.push({
             codigoBarras: codigoDeBarras,
             empresa: empresa,
             valor: valor,
-            categoria: categoria
+            categoria: valor > 100 ? 'cara' : 'padrao'
         });
+    }
+    consultarTodosPagamentos(){
+        return this.#pagamentos;
     }
     consultarUltimoPagamento(){
         return this.#pagamentos.at(-1);
