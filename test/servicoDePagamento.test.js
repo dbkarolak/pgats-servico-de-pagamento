@@ -2,7 +2,7 @@ import ServicoDePagamento from '../src/servicoDePagamento.js';
 import assert from 'node:assert';
 
 describe('Classe de serviço de pagamento', () => {
-    it('Validar que quando o valor do pagamento for menor ou igual a 100, a propriedade categoria é "padrão".', () => {
+    it('Validar que quando o valor do pagamento for maior que zero e menor ou igual a 100, a propriedade categoria é "padrão".', () => {
         //Arrange
         const servicoDePagamento = new ServicoDePagamento();
         const valorAserPago = 100;
@@ -46,5 +46,67 @@ describe('Classe de serviço de pagamento', () => {
         assert.equal(objetoAserPago.empresa, resultadoConsultaUltimoPagamento.empresa);
         assert.equal(objetoAserPago.valor, resultadoConsultaUltimoPagamento.valor);
 
+    });
+    it('Validar que ao não informar o código de barras, o erro "Código de barras, empresa e valor são obrigatórios." será apresentado.', () => {
+        //Arrange
+        const servicoDePagamento = new ServicoDePagamento();
+        const objetoAserPago = {
+            codigoBarras: '',
+            empresa: 'Vivo',
+            valor: 53.79 
+        }
+        //Act & Assert
+        assert.throws(
+            function(){
+                servicoDePagamento.pagar(objetoAserPago.codigoBarras, objetoAserPago.empresa, objetoAserPago.valor)},
+                { message: 'Código de barras, empresa e valor são obrigatórios.' }
+        );
+        
+    });
+    it('Validar que ao não informar a empresa, o erro "Código de barras, empresa e valor são obrigatórios." será apresentado.', () => {
+        //Arrange
+        const servicoDePagamento = new ServicoDePagamento();
+        const objetoAserPago = {
+            codigoBarras: '3333-3333-3333',
+            empresa: '',
+            valor: 53.79 
+        }
+        //Act & Assert
+        assert.throws(
+            function(){
+                servicoDePagamento.pagar(objetoAserPago.codigoBarras, objetoAserPago.empresa, objetoAserPago.valor)},
+                { message: 'Código de barras, empresa e valor são obrigatórios.' }
+        );
+        
+    });
+    it('Validar que ao não informar o valor, o erro "Código de barras, empresa e valor são obrigatórios." será apresentado.', () => {
+        //Arrange
+        const servicoDePagamento = new ServicoDePagamento();
+        const objetoAserPago = {
+            codigoBarras: '3333-3333-3333',
+            empresa: 'Claro',
+            valor: '' 
+        }
+        //Act & Assert
+        assert.throws(
+            function(){
+                servicoDePagamento.pagar(objetoAserPago.codigoBarras, objetoAserPago.empresa, objetoAserPago.valor)},
+                { message: 'Código de barras, empresa e valor são obrigatórios.' }
+        );
+    });
+    it('Validar que ao informar um valor negativo ou zero, o erro "O valor precisa ser numérico e positivo maior que zero." será apresentado.', () => {
+        //Arrange
+        const servicoDePagamento = new ServicoDePagamento();
+        const objetoAserPago = {
+            codigoBarras: '3333-3333-3333',
+            empresa: 'Claro',
+            valor: -32.50
+        }
+        //Act & Assert
+        assert.throws(
+            function(){
+                servicoDePagamento.pagar(objetoAserPago.codigoBarras, objetoAserPago.empresa, objetoAserPago.valor);},
+                { message: 'O valor precisa ser numérico e positivo maior que zero.' }
+        );
     });
 });
