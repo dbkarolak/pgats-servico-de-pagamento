@@ -329,9 +329,3 @@ O método `consultarUltimoPagamento` utiliza `.at(-1)` para retornar o último i
 - Mocha
 - Node Assert
 - Mochawesome
-
----
-
-## Autor
-
-Projeto desenvolvido para a Parte 1 do Trabalho de Conclusão da Disciplina.
