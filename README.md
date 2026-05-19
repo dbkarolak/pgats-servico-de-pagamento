@@ -270,7 +270,7 @@ npm test
 Execute o comando abaixo para gerar o relatório HTML dos testes:
 
 ```bash
-npm run test:report
+npx mocha --reporter mochawesome
 ```
 
 O relatório será gerado no diretório:
