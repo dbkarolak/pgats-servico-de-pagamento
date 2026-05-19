@@ -21,7 +21,7 @@ Para executar este projeto, é necessário ter instalado:
 
 ---
 
-## Parte 1 — Exercício prático de Javascript
+## Parte 1 - Exercício prático de Javascript
 
 A proposta da Parte 1 é criar uma classe Javascript responsável por controlar pagamentos.
 
