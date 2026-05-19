@@ -22,6 +22,7 @@
   "homepage": "https://github.com/dbkarolak/pgats-servico-de-pagamento#readme",
   "description": "",
   "dependencies": {
-    "mocha": "^11.7.5"
+    "mocha": "^11.7.5",
+    "mochawesome": "^7.1.4"
   }
 }
