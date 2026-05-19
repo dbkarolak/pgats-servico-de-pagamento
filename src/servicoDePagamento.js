@@ -5,9 +5,6 @@ export default class ServicoDePagamento{
     }
 
     pagar(codigoDeBarras, empresa, valor){
-        //let categoria = 'padrão';
-        //if(valor > 100)
-        //    categoria = 'cara';
         if(!codigoDeBarras || !empresa || !valor)
             throw(new Error("Código de barras, empresa e valor são obrigatórios."));
 
