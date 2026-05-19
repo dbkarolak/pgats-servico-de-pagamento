@@ -64,7 +64,7 @@ src/servicoDePagamento.js
 
 ## Regras implementadas
 
-### Pagamento com categoria padrão
+### Pagamento com categoria "padrão"
 
 Quando o valor do pagamento for maior que zero e menor ou igual a `100.00`, o pagamento será registrado com a categoria `"padrão"`.
 
@@ -91,7 +91,7 @@ Resultado esperado:
 
 ---
 
-### Pagamento com categoria cara
+### Pagamento com categoria "cara"
 
 Quando o valor do pagamento for maior que `100.00`, o pagamento será registrado com a categoria `"cara"`.
 
