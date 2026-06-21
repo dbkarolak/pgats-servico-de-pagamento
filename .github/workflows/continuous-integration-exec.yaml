@@ -4,6 +4,8 @@
 name: 'CI - Validação do Serviço de Pagamento'
 
 on:
+  workflow_dispatch:
+  
   push:
     branches:
       - development
