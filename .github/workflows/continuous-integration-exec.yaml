@@ -44,7 +44,7 @@ jobs:
           name: Relatório de Testes Mochawesome
           retention-days: 30
 
-    merge-to-production:
+  merge-to-production:
     runs-on: ubuntu-24.04
     needs: [e2e-tests]
 
@@ -64,7 +64,7 @@ jobs:
       - name: Realizando merge para production
         run: |
           git fetch origin
-          git checkout prodution
-          git pull origin prodution
+          git checkout production
+          git pull origin production
           git merge origin/development --no-ff -m "ci: realiza merge automatico para production"
           git push origin production
