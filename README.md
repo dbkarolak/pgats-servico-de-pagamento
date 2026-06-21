@@ -1,4 +1,152 @@
-# Trabalho de Conclusão da Disciplina - Parte 1
+# Trabalho de Conclusão da Disciplina Integração Contínua para Automação de Testes
+
+## Orientações
+
+Este repositório possui uma pipeline de **Integração Contínua** com **GitHub Actions**, criada para automatizar a execução dos testes do projeto Serviço de Pagamento, elaborado na disciplina **Programação para Automação de Testes**.
+
+A pipeline está no arquivo:
+
+```bash
+.github/workflows/continuous-integration-exec.yaml
+```
+
+### Objetivo
+
+Desenvolver uma pipeline de integração contínua utilizando GitHub Actions para um projeto com testes automatizados, contemplando:
+- Execução por push.
+- Execução manual.
+- Execução agendada (schedule).
+- Geração de relatório de testes.
+- Armazenamento/publicação do relatório na pipeline.
+- Criação de um README explicando a solução e os conceitos utilizados.
+
+Preferencialmente utilizar um projeto desenvolvido em outra disciplina da pós-graduação.
+
+### Requisitos
+
+- Trabalho individual.
+- Utilizar GitHub Actions.
+- Pipeline executando com sucesso.
+- Testes automatizados executando com sucesso.
+- Relatório de execução armazenado na pipeline.
+- Aplicação correta dos conceitos estudados.
+- Uso adequado das ferramentas escolhidas.
+- Documentação completa no README.
+
+### Pipeline
+
+A pipeline contempla:
+
+- Execução manual com workflow_dispatch.
+- Execução agendada com schedule.
+- Execução por push na branch development.
+- Execução dos testes automatizados.
+- Geração de relatório com Mochawesome.
+- Publicação do relatório como artifact.
+- Merge automático para production somente quando os testes passam com sucesso.
+
+### Gatilhos Configurados
+
+A pipeline possui três formas de execução:
+
+- Execução manual
+
+```yaml
+workflow_dispatch:
+```
+
+- Execução agendada
+
+```yaml
+schedule:
+  - cron: '0 * * * 6,0'
+```
+
+Referência do Cron:
+
+```text
+* * * * *
+│ │ │ │ │
+│ │ │ │ └── dia da semana
+│ │ │ └──── mês
+│ │ └────── dia do mês
+│ └──────── hora
+└────────── minuto
+```
+
+Para o nosso projeto:
+
+```text
+0 * * * 6,0
+│ │ │ │ │
+│ │ │ │ └── sábado e domingo
+│ │ │ └──── qualquer mês
+│ │ └────── qualquer dia do mês
+│ └──────── qualquer hora
+└────────── minuto 0
+```
+
+Portanto, a pipeline será executada a cada 1 hora aos sábados e domingos.
+
+**Observação:** no GitHub Actions, os agendamentos com `schedule` utilizam o horário UTC.
+
+- Execução quando houver alterações na branch `development`:
+
+```yaml
+push:
+  branches:
+    - development
+```
+
+### Fluxo da Pipeline via Push
+
+```text
+push na development
+        ↓
+execução dos testes
+        ↓
+geração do relatório
+        ↓
+publicação do artifact
+        ↓
+merge para production se os testes passarem
+```
+Caso algum teste falhe, o merge para `production` não é executado.
+
+### Testes e Relatório
+
+Os testes são executados com:
+```bash
+npm run test:report
+```
+
+O relatório é gerado na pasta:
+```mochawesome-report/
+```
+
+Na pipeline, esse relatório é publicado como artifact com o nome:
+```text
+Relatório de Testes Mochawesome
+```
+O artifact fica disponível por 30 dias na página da execução da pipeline.
+
+### Evidência da Execução
+
+A evidência da execução pode ser consultada na aba Actions do GitHub, no workflow:
+
+```text
+CI - Validação do Serviço de Pagamento
+```
+
+A execução com sucesso deve apresentar:
+
+- Job de testes executado com sucesso.
+- Job de merge para production executado com sucesso.
+- Artifact Relatório de Testes Mochawesome disponível para download.
+
+---
+
+# Trabalho de Conclusão da Disciplina Programação para Automação de Testes - Parte 1
 
 ## Orientações
 
@@ -270,7 +418,7 @@ npm test
 Execute o comando abaixo para gerar o relatório HTML dos testes:
 
 ```bash
-npx mocha --reporter mochawesome
+npm run test:report
 ```
 
 O relatório será gerado no diretório:
