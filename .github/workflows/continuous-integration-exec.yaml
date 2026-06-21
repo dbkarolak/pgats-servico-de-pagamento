@@ -14,6 +14,9 @@ on:
     # Executa a cada 1 hora aos sábados e domingos
     - cron: '0 * * * 6,0'
 
+permissions:
+  contents: write
+
 jobs:
   e2e-tests:
     runs-on: ubuntu-24.04
@@ -40,3 +43,28 @@ jobs:
           path: ./mochawesome-report
           name: Relatório de Testes Mochawesome
           retention-days: 30
+
+    merge-to-production:
+    runs-on: ubuntu-24.04
+    needs: [e2e-tests]
+
+    if: ${{ success() && github.event_name == 'push' && github.ref == 'refs/heads/development' }}
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Configurando usuario Git
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+
+      - name: Realizando merge para production
+        run: |
+          git fetch origin
+          git checkout prodution
+          git pull origin prodution
+          git merge origin/development --no-ff -m "ci: realiza merge automatico para production"
+          git push origin production
