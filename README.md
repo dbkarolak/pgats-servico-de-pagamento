@@ -116,18 +116,22 @@ Caso algum teste falhe, o merge para `production` não é executado.
 ### Testes e Relatório
 
 Os testes são executados com:
+
 ```bash
 npm run test:report
 ```
 
 O relatório é gerado na pasta:
-```mochawesome-report/
+```text
+mochawesome-report/
 ```
 
 Na pipeline, esse relatório é publicado como artifact com o nome:
+
 ```text
 Relatório de Testes Mochawesome
 ```
+
 O artifact fica disponível por 30 dias na página da execução da pipeline.
 
 ### Evidência da Execução
