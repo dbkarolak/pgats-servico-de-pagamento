@@ -22,5 +22,15 @@ jobs:
       - name: Instalando dependências
         run: npm install
 
+      # executar os testes automatizados com relatório
       - name: Executando testes automatizados
         run: npm run test:report
+
+      # salvar relatório de testes
+      - name: Salvando relatório de testes
+        uses: actions/upload-artifact@v7.0.1
+        if: ${{ always() }}
+        with:
+          path: ./mochawesome-report
+          name: Relatório de Testes Mochawesome
+          retention-days: 30
