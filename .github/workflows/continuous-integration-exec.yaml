@@ -5,10 +5,14 @@ name: 'CI - Validação do Serviço de Pagamento'
 
 on:
   workflow_dispatch:
-  
+
   push:
     branches:
       - development
+
+  schedule:
+    # Executa a cada 1 hora aos sábados e domingos
+    - cron: '0 * * * 6,0'
 
 jobs:
   e2e-tests:
