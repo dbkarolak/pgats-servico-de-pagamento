@@ -33,7 +33,9 @@ Preferencialmente utilizar um projeto desenvolvido em outra disciplina da pós-g
 - Uso adequado das ferramentas escolhidas.
 - Documentação completa no README.
 
-### Pipeline
+---
+
+## Pipeline de Integração Contínua
 
 A pipeline contempla:
 
