@@ -5,9 +5,9 @@
     "passes": 7,
     "pending": 0,
     "failures": 0,
-    "start": "2026-05-19T00:27:21.714Z",
-    "end": "2026-05-19T00:27:21.725Z",
-    "duration": 11,
+    "start": "2026-06-21T01:30:26.441Z",
+    "end": "2026-06-21T01:30:26.450Z",
+    "duration": 9,
     "testsRegistered": 7,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,18 +18,18 @@
   },
   "results": [
     {
-      "uuid": "4a527d8b-a634-4eb9-bce3-cb75c4780cdb",
+      "uuid": "c7655ae4-70e4-473b-abe9-1f1720d60884",
       "title": "",
-      "fullFile": "D:\\Git\\pgats-servico-de-pagamento\\test\\servicoDePagamento.test.js",
+      "fullFile": "D:\\Git\\pgats-servico-de-pagamento-ci\\pgats-servico-de-pagamento\\test\\servicoDePagamento.test.js",
       "file": "\\test\\servicoDePagamento.test.js",
       "beforeHooks": [],
       "afterHooks": [],
       "tests": [],
       "suites": [
         {
-          "uuid": "949416b8-bd6d-4bfd-94f4-92773af44b81",
+          "uuid": "cedb0b79-1d69-4ad7-9191-f0e0de00d486",
           "title": "Classe de serviço de pagamento",
-          "fullFile": "D:\\Git\\pgats-servico-de-pagamento\\test\\servicoDePagamento.test.js",
+          "fullFile": "D:\\Git\\pgats-servico-de-pagamento-ci\\pgats-servico-de-pagamento\\test\\servicoDePagamento.test.js",
           "file": "\\test\\servicoDePagamento.test.js",
           "beforeHooks": [],
           "afterHooks": [],
@@ -47,8 +47,8 @@
               "context": null,
               "code": "//Arrange\nconst servicoDePagamento = new ServicoDePagamento();\nconst valorAserPago = 100;\n    \n//Act\nservicoDePagamento.pagar('1111-1111-1111', 'Claro', valorAserPago);\nconst resultado = servicoDePagamento.consultarUltimoPagamento();\n//Assert\nassert.equal(resultado.categoria,'padrão');",
               "err": {},
-              "uuid": "23e7903f-90f2-4a2f-bac5-19e734a575a5",
-              "parentUUID": "949416b8-bd6d-4bfd-94f4-92773af44b81",
+              "uuid": "a54d7dcf-9f83-46a5-9cac-30d602b1adc8",
+              "parentUUID": "cedb0b79-1d69-4ad7-9191-f0e0de00d486",
               "isHook": false,
               "skipped": false
             },
@@ -65,8 +65,8 @@
               "context": null,
               "code": "//Arrange\nconst servicoDePagamento = new ServicoDePagamento();\nconst valorAserPago = 100.01;\n    \n//Act\nservicoDePagamento.pagar('1111-1111-1111', 'Claro', valorAserPago);\nconst resultado = servicoDePagamento.consultarUltimoPagamento();\n//Assert\nassert.equal(resultado.categoria,'cara');",
               "err": {},
-              "uuid": "943aa767-1392-43e6-8b06-73151b8843ce",
-              "parentUUID": "949416b8-bd6d-4bfd-94f4-92773af44b81",
+              "uuid": "c7850fb8-4fab-4cde-bf89-da2c453a606e",
+              "parentUUID": "cedb0b79-1d69-4ad7-9191-f0e0de00d486",
               "isHook": false,
               "skipped": false
             },
@@ -83,8 +83,8 @@
               "context": null,
               "code": "//Arrange\nconst servicoDePagamento = new ServicoDePagamento();\nconst objetoAserPago = {\n    codigoBarras: '2222-2222-2222',\n    empresa: 'Tim',\n    valor: 53.79 \n}\n    \n//Act\nservicoDePagamento.pagar(objetoAserPago.codigoBarras, objetoAserPago.empresa, objetoAserPago.valor);\nconst resultadoConsultaUltimoPagamento = servicoDePagamento.consultarUltimoPagamento();\n\n//Assert\nassert.equal(objetoAserPago.codigoBarras, resultadoConsultaUltimoPagamento.codigoBarras);\nassert.equal(objetoAserPago.empresa, resultadoConsultaUltimoPagamento.empresa);\nassert.equal(objetoAserPago.valor, resultadoConsultaUltimoPagamento.valor);",
               "err": {},
-              "uuid": "33fc53a3-bb0e-4bc2-9a63-c2b341a0d3e6",
-              "parentUUID": "949416b8-bd6d-4bfd-94f4-92773af44b81",
+              "uuid": "c88f4c98-bd5a-4ecc-90bd-246a6990d637",
+              "parentUUID": "cedb0b79-1d69-4ad7-9191-f0e0de00d486",
               "isHook": false,
               "skipped": false
             },
@@ -101,8 +101,8 @@
               "context": null,
               "code": "//Arrange\nconst servicoDePagamento = new ServicoDePagamento();\nconst objetoAserPago = {\n    codigoBarras: '',\n    empresa: 'Vivo',\n    valor: 53.79 \n}\n//Act & Assert\nassert.throws(\n    function(){\n        servicoDePagamento.pagar(objetoAserPago.codigoBarras, objetoAserPago.empresa, objetoAserPago.valor)},\n        { message: 'Código de barras, empresa e valor são obrigatórios.' }\n);",
               "err": {},
-              "uuid": "3bb537c3-8f42-49fb-bfb2-9f099a604e5c",
-              "parentUUID": "949416b8-bd6d-4bfd-94f4-92773af44b81",
+              "uuid": "fe90cfee-c48e-4ea0-950d-bba4c477aa20",
+              "parentUUID": "cedb0b79-1d69-4ad7-9191-f0e0de00d486",
               "isHook": false,
               "skipped": false
             },
@@ -119,8 +119,8 @@
               "context": null,
               "code": "//Arrange\nconst servicoDePagamento = new ServicoDePagamento();\nconst objetoAserPago = {\n    codigoBarras: '3333-3333-3333',\n    empresa: '',\n    valor: 53.79 \n}\n//Act & Assert\nassert.throws(\n    function(){\n        servicoDePagamento.pagar(objetoAserPago.codigoBarras, objetoAserPago.empresa, objetoAserPago.valor)},\n        { message: 'Código de barras, empresa e valor são obrigatórios.' }\n);",
               "err": {},
-              "uuid": "46545a8b-63b4-42ed-97f7-8e0db343bfd6",
-              "parentUUID": "949416b8-bd6d-4bfd-94f4-92773af44b81",
+              "uuid": "bd117e0f-8a04-43ea-9dda-a5d28b541ba4",
+              "parentUUID": "cedb0b79-1d69-4ad7-9191-f0e0de00d486",
               "isHook": false,
               "skipped": false
             },
@@ -137,8 +137,8 @@
               "context": null,
               "code": "//Arrange\nconst servicoDePagamento = new ServicoDePagamento();\nconst objetoAserPago = {\n    codigoBarras: '3333-3333-3333',\n    empresa: 'Claro',\n    valor: '' \n}\n//Act & Assert\nassert.throws(\n    function(){\n        servicoDePagamento.pagar(objetoAserPago.codigoBarras, objetoAserPago.empresa, objetoAserPago.valor)},\n        { message: 'Código de barras, empresa e valor são obrigatórios.' }\n);",
               "err": {},
-              "uuid": "f4b2cfc3-7c05-41ae-b06b-dd765057b60f",
-              "parentUUID": "949416b8-bd6d-4bfd-94f4-92773af44b81",
+              "uuid": "fe4f7520-db9b-4023-bb59-59f168eeacf2",
+              "parentUUID": "cedb0b79-1d69-4ad7-9191-f0e0de00d486",
               "isHook": false,
               "skipped": false
             },
@@ -155,21 +155,21 @@
               "context": null,
               "code": "//Arrange\nconst servicoDePagamento = new ServicoDePagamento();\nconst objetoAserPago = {\n    codigoBarras: '3333-3333-3333',\n    empresa: 'Claro',\n    valor: -32.50\n}\n//Act & Assert\nassert.throws(\n    function(){\n        servicoDePagamento.pagar(objetoAserPago.codigoBarras, objetoAserPago.empresa, objetoAserPago.valor);},\n        { message: 'O valor precisa ser numérico e positivo maior que zero.' }\n);",
               "err": {},
-              "uuid": "10d78724-4e07-4bfa-955e-6f5b9c00eb71",
-              "parentUUID": "949416b8-bd6d-4bfd-94f4-92773af44b81",
+              "uuid": "310220f4-fbe3-4ea8-946a-f6c2874d477f",
+              "parentUUID": "cedb0b79-1d69-4ad7-9191-f0e0de00d486",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "23e7903f-90f2-4a2f-bac5-19e734a575a5",
-            "943aa767-1392-43e6-8b06-73151b8843ce",
-            "33fc53a3-bb0e-4bc2-9a63-c2b341a0d3e6",
-            "3bb537c3-8f42-49fb-bfb2-9f099a604e5c",
-            "46545a8b-63b4-42ed-97f7-8e0db343bfd6",
-            "f4b2cfc3-7c05-41ae-b06b-dd765057b60f",
-            "10d78724-4e07-4bfa-955e-6f5b9c00eb71"
+            "a54d7dcf-9f83-46a5-9cac-30d602b1adc8",
+            "c7850fb8-4fab-4cde-bf89-da2c453a606e",
+            "c88f4c98-bd5a-4ecc-90bd-246a6990d637",
+            "fe90cfee-c48e-4ea0-950d-bba4c477aa20",
+            "bd117e0f-8a04-43ea-9dda-a5d28b541ba4",
+            "fe4f7520-db9b-4023-bb59-59f168eeacf2",
+            "310220f4-fbe3-4ea8-946a-f6c2874d477f"
           ],
           "failures": [],
           "pending": [],
@@ -207,7 +207,13 @@
       "version": "7.1.4"
     },
     "marge": {
-      "options": null,
+      "options": {
+        "reportDir": "mochawesome-report",
+        "reportFilename": "mochawesome",
+        "overwrite": "true",
+        "html": "true",
+        "json": "true"
+      },
       "version": "6.3.2"
     }
   }

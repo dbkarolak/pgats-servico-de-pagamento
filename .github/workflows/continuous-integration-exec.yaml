@@ -1,0 +1,26 @@
+# Pipeline de Integração Continua para a disciplina 04 - Integração Contínua para Automação de Testes
+# Contemplando o projeto Serviço de Pagamento
+
+name: 'CI - Validação do Serviço de Pagamento'
+
+on:
+  push:
+    branches:
+      - development
+
+jobs:
+  e2e-tests:
+    runs-on: ubuntu-24.04
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24.x
+
+      - name: Instalando dependências
+        run: npm install
+
+      - name: Executando testes automatizados
+        run: npm run test:report
