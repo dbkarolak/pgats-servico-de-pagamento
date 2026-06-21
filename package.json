@@ -6,7 +6,8 @@
     "test": "test"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "test:report": "mocha --reporter mochawesome --reporter-options reportDir=mochawesome-report,reportFilename=mochawesome,overwrite=true,html=true,json=true"
   },
   "repository": {
     "type": "git",
