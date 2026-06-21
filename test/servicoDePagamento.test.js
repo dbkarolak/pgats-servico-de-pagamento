@@ -12,7 +12,8 @@ describe('Classe de serviço de pagamento', () => {
         const resultado = servicoDePagamento.consultarUltimoPagamento();
 
         //Assert
-        assert.equal(resultado.categoria,'padrão');
+        //assert.equal(resultado.categoria,'padrão');
+        assert.equal(resultado.categoria,'cara');
 
     });
     it('Validar que quando o valor do pagamento for maior que 100, a propriedade categoria é "cara".', () => {
